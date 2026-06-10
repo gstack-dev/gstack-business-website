@@ -1,26 +1,80 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Shadcn Default Variables */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --radius-xl: calc(var(--radius) * 3);
+
+  /* --- ELEVATE STUDIO DESIGN SYSTEM TOKENS --- */
+  
+  /* Fonts */
+  --font-display: var(--font-poppins), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+  
+  /* Add the Ambient Shadow & Border Radius from Section 4 */
+  --shadow-ambient: 0px 24px 48px rgba(0, 0, 0, 0.4);
+  --shadow-primary-glow: 0px 0px 30px rgba(37, 99, 235, 0.05);
+
+  /* Surface Logic (The "No-Line" Rule Base) */
+  --color-surface: #0b1326;
+  --color-surface-dim: #0b1326;
+  --color-surface-lowest: #060e20;
+  --color-surface-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-high: #222a3d;
+  --color-surface-highest: #2d3449;
+
+  /* Brand Accents */
+  --color-brand-primary: #2563eb;
+  --color-brand-tertiary: #4edea3; /* The Emerald "Laser Pointer" */
+  --color-brand-onTertiary: #003824;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base Theme Configuration */
+:root {
+  --radius: 1rem;
+}
+
+/* Force Dark Mode defaults as the baseline to match the design */
+.dark, :root {
+  --background: #0b1326; /* Maps to your surface color */
+  --foreground: #dae2fd; /* Maps to on-background */
+  
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  
+  --muted: #2d3449;
+  --muted-foreground: #8d90a0;
+  
+  --border: #434655; /* outline-variant */
+  --input: #131b2e; /* surface-container-low */
+  --ring: #2563eb;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
 }
