@@ -10,6 +10,16 @@ import {
     ShieldCheck
 } from "lucide-react";
 import Link from "next/link";
+import type { Metadata } from 'next'
+
+
+export const metadata: Metadata = {
+    title: 'About Us | Elevate Studio - Visionary Digital Architects',
+    description: "Learn about Elevate Studio's mission, our core values, and the boutique collective of designers and engineers building world-class digital realities.",
+    openGraph: {
+        images: ['/aboutUs.png'],
+    },
+}
 
 export default function AboutPage() {
     return (

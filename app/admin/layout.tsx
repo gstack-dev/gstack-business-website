@@ -11,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: "Admin Dashboard | G-Stack",
-    description: "Secure internal management portal.",
+    title: "Admin Dashboard | Elevate Studio",
+    description: "Secure internal management portal for Elevate Studio.",
     robots: {
         index: false,
         follow: false, // Prevents search engines from indexing your admin panel

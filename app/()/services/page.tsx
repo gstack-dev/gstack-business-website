@@ -11,6 +11,16 @@ import {
     Wrench
 } from "lucide-react";
 import Link from "next/link";
+import type { Metadata } from 'next'
+
+
+export const metadata: Metadata = {
+    title: 'Digital Services | Web Design, Development & Strategy | Elevate Studio',
+    description: "Explore our full-spectrum digital services, including UI/UX Web Design, Scalable Frontend Development, Backend Integration, and continuous Website Maintenance.",
+    openGraph: {
+        images: ['/services.png'],
+    },
+}
 
 export default function ServicesPage() {
     return (

@@ -2,6 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from 'next'
+
+
+export const metadata: Metadata = {
+    title: 'Selected Work & Portfolio | Elevate Studio',
+    description: "View Elevate Studio's portfolio of selected work. Discover how we bridge engineering precision and visionary design through our latest case studies.",
+    openGraph: {
+        images: ['/projects.png'],
+    },
+}
 
 export default function ProjectPage() {
     return (

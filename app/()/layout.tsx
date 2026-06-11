@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
+  robots: {
+    index: true,
+    follow: true, // Allows search engines to index your website
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

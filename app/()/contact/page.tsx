@@ -1,6 +1,15 @@
 import ContactForm from "@/components/web/ContactForm";
 import { AtSign, CheckCircle2, Phone } from "lucide-react";
 import Image from "next/image";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'Contact Us | Start Your Project with Elevate Studio',
+    description: "Ready to elevate your digital presence? Get in touch with Elevate Studio to discuss your project, request a quote, or start a collaboration.",
+    openGraph: {
+        images: ['/Contact.png'],
+    },
+}
 
 export default function ContactPage() {
     return (

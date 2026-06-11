@@ -2,7 +2,7 @@
 
 > Modern Digital Agency Website built with Next.js, TypeScript, Tailwind CSS, MongoDB, and Zod.
 
-![Elevate Studio Preview](./public/image.png)
+![Elevate Studio Preview](./public/home.png)
 
 ## 🚀 Overview
 
@@ -174,10 +174,10 @@ npm start
 
 ## 🚀 Live Demo
 
-👉 [View Live Project](https://gstack-ashen.vercel.app)
+👉 [View Live Project](https://gstack-business-website.vercel.app)
 
 ---
-
+    
 ## 📈 Business Goal
 
 The purpose of Elevate Studio is to demonstrate a real-world digital agency website capable of:
