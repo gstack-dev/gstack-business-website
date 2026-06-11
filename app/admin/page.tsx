@@ -7,6 +7,7 @@ import {
     Loader2
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 // --- Types ---
 interface Inquiry {
@@ -53,7 +54,7 @@ export default function AdminDashboard() {
 
                 const responseData = await response.json();
                 const contacts = responseData.contacts;
-                
+
                 if (Array.isArray(contacts)) {
                     setInquiries(contacts);
                 } else if (contacts && Array.isArray(contacts.data)) {
@@ -77,7 +78,7 @@ export default function AdminDashboard() {
     // --- Pagination Logic ---
     const totalInquiries = inquiries.length;
     const totalPages = Math.ceil(totalInquiries / itemsPerPage);
-    
+
     const indexOfLastInquiry = currentPage * itemsPerPage;
     const indexOfFirstInquiry = indexOfLastInquiry - itemsPerPage;
     const currentInquiries = inquiries.slice(indexOfFirstInquiry, indexOfLastInquiry);
@@ -98,16 +99,18 @@ export default function AdminDashboard() {
         <div className="flex flex-col min-h-screen bg-background overflow-hidden">
 
             {/* Top Header */}
-            <header className="px-8 py-4 bg-surface-low flex items-center justify-between shadow-sm relative z-10">
-                <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center shadow-primary-glow">
-                        <Image src="/navIcon.svg" alt="Logo" width={20} height={20} className="rounded-full" />
+            <Link href="/">
+                <header className="px-8 py-4 bg-surface-low flex items-center justify-between shadow-sm relative z-10">
+                    <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center shadow-primary-glow">
+                            <Image src="/navIcon.svg" alt="Logo" width={20} height={20} className="rounded-full" />
+                        </div>
+                        <span className="text-xl font-display font-bold tracking-tight text-foreground">
+                            Elevate Studio
+                        </span>
                     </div>
-                    <span className="text-xl font-display font-bold tracking-tight text-foreground">
-                        Elevate Studio
-                    </span>
-                </div>
-            </header>
+                </header>
+            </Link>
 
             {/* Main Content */}
             <main className="flex-1 p-8 overflow-y-auto bg-background">
@@ -197,19 +200,19 @@ export default function AdminDashboard() {
                         </div>
 
                         <div className="flex gap-2">
-                            <button 
+                            <button
                                 onClick={handlePrevPage}
                                 disabled={currentPage === 1}
                                 className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-lowest text-muted-foreground hover:bg-surface-high hover:text-foreground transition-all disabled:opacity-30 disabled:hover:bg-surface-lowest disabled:hover:text-muted-foreground disabled:cursor-not-allowed"
                             >
                                 <ChevronLeft className="w-5 h-5" />
                             </button>
-                            
+
                             <button className="w-10 h-10 flex items-center justify-center rounded-xl bg-brand-primary text-white font-bold shadow-primary-glow">
                                 {currentPage}
                             </button>
-                            
-                            <button 
+
+                            <button
                                 onClick={handleNextPage}
                                 disabled={currentPage === totalPages || totalPages === 0}
                                 className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-lowest text-muted-foreground hover:bg-surface-high hover:text-foreground transition-all disabled:opacity-30 disabled:hover:bg-surface-lowest disabled:hover:text-muted-foreground disabled:cursor-not-allowed"
