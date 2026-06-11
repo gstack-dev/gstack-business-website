@@ -5,8 +5,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button"; // Integrating the shadcn button we built
+import { useState } from "react";
 
 export default function ContactForm() {
+    const [isLoading, setIsLoading] = useState(false);
     const {
         register,
         handleSubmit,
@@ -30,7 +32,16 @@ export default function ContactForm() {
     const budgetOptions = ["Under $10K", "$10K - $25K", "$25K - $50K", "$50K+"] as const;
 
     async function onSubmit(data: z.infer<typeof ContactSchema>) {
-        if (data) {
+        setIsLoading(true);
+        const resp = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+
+        if (resp.ok) {
             toast.success("Thank you for your message! We will get back to you soon.", {
                 duration: 5000,
             });
@@ -40,6 +51,7 @@ export default function ContactForm() {
                 duration: 5000,
             });
         }
+        setIsLoading(false);
     }
 
     return (
@@ -145,8 +157,9 @@ export default function ContactForm() {
                     variant="tertiary"
                     size="lg"
                     className="w-full md:w-auto"
+                    disabled={isLoading}
                 >
-                    Send Inquiry
+                    {isLoading ? "Sending..." : "Send Inquiry"}
                 </Button>
             </div>
         </form>

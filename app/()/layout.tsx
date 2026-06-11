@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/web/Navbar";
 import Footer from "@/components/web/Footer";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: 'swap' });
 const poppins = Poppins({
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </div>
         <Footer />
+        <Toaster position="bottom-right" richColors />
       </body>
     </html>
   );
